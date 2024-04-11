@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import './index.css';
-import App from './App';
+import './App.css';
+
 import reportWebVitals from './reportWebVitals';
+import { RouterProvider } from 'react-router-dom';
+import { MainRouter } from './router/MainRouter';
+import { AppContextProvider } from './components/ContextApi';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import store, { persistor } from './redux/Store';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Suspense fallback={"...loading"}>
+      <Provider store={store}>
+      <PersistGate loading={"loading ..."} persistor={persistor}>
+    <AppContextProvider>
+      
+      <RouterProvider router={MainRouter} />
+      </AppContextProvider>
+     
+      </PersistGate>
+      </Provider>
+    </Suspense>
+
   </React.StrictMode>
 );
 
