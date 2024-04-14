@@ -3,10 +3,15 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { createResetMetaReducer } from "./slices/MetaReducer";
 import addToCard from "./slices/AddToCard";
+import authSlice from "./slices/LoginSlices";
+import productSlice from "./slices/AllProduct";
+
 
 
 const resetSlices = [
     "addtocard",
+    "auth",
+    "allproduct"
 ];
 const rootReducer = createResetMetaReducer(
     "GLOBAL RESET",
@@ -14,7 +19,9 @@ const rootReducer = createResetMetaReducer(
 )
     (
         combineReducers({
-            addtocard: addToCard
+            addtocard: addToCard,
+            authinfo: authSlice,
+          allproduct: productSlice,
 
         })
     );

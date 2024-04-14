@@ -3,13 +3,16 @@ import { Button, Card, Checkbox, Form, Input, Modal } from 'antd'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { userLogin } from '../../services/LoginAction';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const onFinish =  (values) => {
-    userLogin(values)(dispatch).unwrap();
+
+  const onFinish = async(values) => {
+    await userLogin(values)(dispatch).unwrap();
+    navigate ('/');
    
     // console.log('Success:', values);
     console.log('valuesss', values);
@@ -31,6 +34,11 @@ const Login = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  const testdata = useSelector((state) => state);
+  console.log('Test data:', testdata?.authinfo?.loading);
+
+
 
   return (
 
@@ -104,7 +112,7 @@ const Login = () => {
               >
 
 
-                <Button type="primary" htmlType="submit" className="bg-red-600 ml-5 w-55">
+                <Button type="primary" htmlType="submit" className="bg-red-600 ml-5 w-55" loading={testdata?.authinfo?.loading}>
                   Log In
                 </Button>
 

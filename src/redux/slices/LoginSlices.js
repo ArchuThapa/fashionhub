@@ -16,34 +16,34 @@ const authSlice = createSlice({
             state.userInfo = { data: [] };
             state.userToken = null; //Merge new data with existing data
         },
-        setLoading: (state, action) => {
-            state.loading = action.payload;
-        },
+        // setLoading: (state, action) => {
+        //     state.loading = action.payload;
+        // },
     },
-    extraReducers: {
+    extraReducers: (builder) => {
         //login user
-        [userLogin.pending]: (state) => {
+        builder
+        .addCase(userLogin.pending, (state) => {
             state.loading = true;
             state.error = null;
 
-        },
-        [userLogin.fullfilled]: (state, { payload }) => {
+        })
+        .addCase(userLogin.fulfilled, (state, { payload }) => {
             state.loading = false;
             state.userInfo = payload;
             state.userToken = payload?.data?.token;
-        },
+        })
 
-        [userLogin.rejected]: (state, { payload }) => {
+        .addCase(userLogin.rejected, (state, { payload }) => {
 
             state.loading = false;
             state.error = payload;
 
-        },
-    },
-    prepare: (state) => {
-        if (userToken) {
-            state.userToken = userToken;
-        }
+        });
+    // prepare: (state) => {
+    //     if (userToken) {
+    //         state.userToken = userToken;
+    //     }
     },
 
 });
