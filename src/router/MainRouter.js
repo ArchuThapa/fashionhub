@@ -3,6 +3,12 @@ import React from "react";
 import Dashboard from "../components/user/dashboard/Dashboard";
 import Details from "../components/user/Details";
 import PaymentMethod from "../components/user/PaymentMethod";
+import UserList from "../components/admin/UserList";
+import Profile from "../components/admin/Profile";
+import Hotproduct from "../components/admin/Hotproduct";
+import UserProfile from "../components/user/userprofile/UserProfile";
+import SearchProduct from "../components/user/SearchProduct";
+import Sort from "../components/user/Sort";
 const AuthLayout = React.lazy(() =>import("../components/layout/AuthLayout"))
 const Signup = React.lazy(() =>import("../components/auth/Signup"))
 const Login = React.lazy(() =>import("../components/auth/Login"))
@@ -20,6 +26,13 @@ export const MainRouter = createBrowserRouter(
 
                 <Route index element={<Dashboard />} />
                 <Route path="/details" element={<Details />}/>
+                <Route path="user/profile" element={<UserProfile />}/>
+                <Route path="searchproduct/:id" element={<SearchProduct/>}/>
+                <Route path="sortdata" element={<Sort/>}/>
+
+
+
+
                 
 
                
@@ -28,6 +41,12 @@ export const MainRouter = createBrowserRouter(
             </Route>
             <Route path="/admin" element={<AdminLayout />}>
                 <Route path="dashboard" element={<AdminDashboard />} />
+                <Route path="userlist" element={<UserList/>} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="hotproduct" element={<Hotproduct />} />
+
+
+
             </Route>
 
                 

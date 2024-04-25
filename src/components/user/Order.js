@@ -62,6 +62,7 @@ const Order = () => {
     }, 0);
 
      console.log('orderdata', orderdata);
+    
 return (
     <div>
       <h1>Details</h1>

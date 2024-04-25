@@ -5,13 +5,23 @@ import { createResetMetaReducer } from "./slices/MetaReducer";
 import addToCard from "./slices/AddToCard";
 import authSlice from "./slices/LoginSlices";
 import productSlice from "./slices/AllProduct";
-
+import limitSlice from "./slices/LimitProduct";
+import UserAllSlice  from "./slices/UserAllSlice";
+import SearchSlice from "./slices/SearchData";
+import SearchDynamicProduct from "./slices/SearchDynamicProduct"
+import SortSlice from "./slices/SortSlice";
 
 
 const resetSlices = [
     "addtocard",
     "auth",
-    "allproduct"
+    "allproduct",
+    "carouseldata",
+    "userdata",
+    "searchproduct",
+    "searchdynamicproduct",
+    "sortdata"
+
 ];
 const rootReducer = createResetMetaReducer(
     "GLOBAL RESET",
@@ -22,6 +32,12 @@ const rootReducer = createResetMetaReducer(
             addtocard: addToCard,
             authinfo: authSlice,
           allproduct: productSlice,
+          carouseldata: limitSlice,
+          userdata: UserAllSlice,
+          searchproduct:SearchSlice,
+          searchdynamicproduct:SearchDynamicProduct,
+          sortdata:SortSlice,
+          
 
         })
     );

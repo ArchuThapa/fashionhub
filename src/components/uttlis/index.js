@@ -1,3 +1,5 @@
+import { AppstoreOutlined, MailOutlined } from "@ant-design/icons";
+
 export  const hotproduct=[
     {
         name: 'Woolen sweater',
@@ -152,15 +154,8 @@ export  const hotproduct=[
             }
         ]
     },
-
-
-
-
-
-
-    
-
    ]
+   
    export  const product=[
     {
         name: 'Woolen sweater',
@@ -453,3 +448,41 @@ export  const hotproduct=[
         id:3
     },
    ]
+
+
+   function getItem(label, key, icon, children, type) {
+    return {
+      key,
+      icon,
+      children,
+      label,
+      type,
+    };
+  }
+ export const adminItems = [
+    // getItem('Option 1', '1', <PieChartOutlined />),
+    // getItem('Option 2', '2', <DesktopOutlined/>),
+    // getItem('Option 3', '3', <ContainerOutlined />),
+    getItem('Dashboard', 'dashboard', <MailOutlined/>), 
+    getItem('UserList', 'userlist', <MailOutlined/>), 
+    getItem('Profile', 'profile', <AppstoreOutlined />), 
+    getItem('HotProduct', 'hotproduct', <AppstoreOutlined />), 
+
+    // [
+    //     [
+    //   getItem('Option 5', '5'),
+    //   getItem('Option 6', '6'),
+    //   getItem('Option 7', '7'),
+    //   getItem('Option 8', '8'),
+    // ]),
+    // getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
+    //   getItem('Option 9', '9'),
+    //   getItem('Option 10', '10'),
+    //   getItem('Submenu', 'sub3', null, [getItem('Option 11', '11'), getItem('Option 12', '12')]),
+    // ]),
+
+    // getItem('Option 1', '1', <PieChartOutlined />),
+    // getItem('Option 2', '2', <DesktopOutlined/>),
+    // getItem('Option 3', '3', <ContainerOutlined />),
+    
+  ];
